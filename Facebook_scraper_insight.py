@@ -2,6 +2,10 @@
 """
 Created on Mon Feb 19 15:26:26 2018
 Usage : python Facebook_scraper_insight.py techinsider YYYY-MM-DD
+Update the below parameters in the program before execution
+    token_input = 'Paste your access token string here from the Graph API'
+    target_page_input = 'Enter the facebook page name'
+    date_since_input = 'Enter the date from which data is required'
 Script runs on Python 2/3 with minor changes which are commented in the program
 @author: sahil
 """
