@@ -16,5 +16,8 @@
 	Additional Data Attributes: ["lifetime_post_impressions", "lifetime_post_impressions_unique", "lifetime_post_consumptions", "lifetime_post_consumptions_unique"]
 	
 Limitations:
-The script can only extract the publically accessible data from the script, and results may change based on the privacy settings of the Page as well as the privacy settings of the user who interact woith the page.
+	The script can only extract the publically accessible data from the script, and results may change based on the privacy settings of the Page as well as the privacy settings of the user who interact woith the page.
+	
+Usage:
+	The script can extract the all the available backdated data from the Facebook page by passing the required earlier date. It will exctract all the data from earlier date to current data and create file with current date in its name. Depending on the data available, few pages do not give much older data. 
 	
