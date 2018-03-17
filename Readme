@@ -1,0 +1,20 @@
+					The Facebook Data Scraper/Extraction Script
+					
+	The Facebook scraper script can be used to extract the publically available data from the Facebook pages like (techinsider, NASA,etc). The script is useful to collect the post level data like post message,total number of likes and other reactions, all the post comments and all the replies to the respective comments.
+	The script uses Facebook graph API to extract the post level data using the 'get' request. The guide lines to use the Facebook Graph API are given in the 'Graph API Guidelines' file. We can pass the necessory parameters to 'get' request to extract the required post data using Graph API. The data extracted with 'get' request is in JSON format and then converted to tabular(row-columns) format in CSV file by parsing each post data in the JSON file.
+	There are two versions of the script, first is to extract the publically available data from the Facebook pages and second version is to extract post data as well as the post insight data. 
+	The first version i.e.(Facebook_scraper.py) creates 3 CSV files with post level data, each post comments data and replies comment data which is replies to respective comments. 
+	3 CSV files and attributes:
+	1. {pagename}_feed_YYYYMMDD.csv 
+	Data Attributes: ["page_name", "id", "type", "created_time", "message", "name", "description", "actions_name", "share_count", "comment_count", "like_count", "sad_count", "wow_count", "love_count", "haha_count", "angry_count"]
+	2. {pagename}_post_comments_YYYYMMDD.csv
+	Data Attributes: ["page_name", "post_id", "created_time", "message", "reply_cmt_cnt", "comments_like_cnt", "comment_haha_cnt", "comment_sad_cnt", "comment_wow_cnt", "comment_love_cnt", "comment_angry_cnt", "message_id"]
+	3. {pagename}_reply_comments_YYYYMMDD.csv
+	Data Attributes:  ["page_name", "parent_comment_id", "parent_comment_message", "reply_comment_message", "comment_id", "created_time", "comment_like_cnt"]
+	
+	The second version of script can extract Facebook post insight data like total number views, total uniq visitors to post, number of people who engaged with the post and etc. To execute this script, one needs Admin level access to the Facebook page. The second version is creates same data files as first version in addion with below 4 fields to the '{pagename}_feed_YYYYMMDD.csv' file.
+	Additional Data Attributes: ["lifetime_post_impressions", "lifetime_post_impressions_unique", "lifetime_post_consumptions", "lifetime_post_consumptions_unique"]
+	
+Limitations:
+The script can only extract the publically accessible data from the script, and results may change based on the privacy settings of the Page as well as the privacy settings of the user who interact woith the page.
+	
