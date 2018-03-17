@@ -1,7 +1,8 @@
 # -*- coding: utf-8 -*-
 """
 Created on Mon Feb 19 15:26:26 2018
-
+Usage : python Facebook_scraper_insight.py techinsider YYYY-MM-DD
+Script runs on Python 2/3 with minor changes which are commented in the program
 @author: sahil
 """
 
@@ -325,9 +326,9 @@ if __name__ == "__main__":
 #    token_input = sys.argv[1]
     #target_page_input = sys.argv[1]
     #date_since_input = sys.argv[2]
-    token_input = 'EAACEdEose0cBAONZArWfcY6D9c8NnoAkCa5rsiyQWLfhLUZBgeyK0QdFBstiAf9ILJNgk44EgccBQmm08iJ1GvphMV1JRj2ejepFhJfT9odBo2mUERZCIGOZCdxqu2ZA4OxJKNjZCGRU4wBWuZATcnq395mt0GKGB8Tr1ljDftG0OeP9RK45GKRspGI3SYL51916FbfKxQTSgZDZD'
-    target_page_input = 'MITSARutgers'
-    date_since_input = '2017-01-01'
+    token_input = 'Paste your access token string here from the Graph API'
+    target_page_input = 'Enter the facebook page name'
+    date_since_input = 'Enter the date from which data is required'
     json_path_input = target_page_input+"_data_"+current_day+".json"
     csv_feed_path_input = target_page_input+"_feed_"+current_day+".csv"
     csv_reply_comment_path_input = target_page_input+"_reply_comments_"+current_day+".csv"
