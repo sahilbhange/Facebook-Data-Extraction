@@ -165,7 +165,7 @@ class FacebookScraper:
        
         return list_all
 
-    def convert_comments_data(self, response_json_list):
+    def extract_comments_data(self, response_json_list):
         '''Function to extract post comment data'''
         list_all = []
         for response_json in response_json_list:
@@ -352,7 +352,7 @@ if __name__ == "__main__":
     print("Feed generated")    
     
     print("Create Comment table")
-    comments_table_list = fb.convert_comments_data(json_list)
+    comments_table_list = fb.extract_comments_data(json_list)
     #print(comments_table_list[0])
     fb.create_table_header(comments_table_list, csv_comments_path_input, target_page_input, "comments")
     print("comments_table_list generated")
