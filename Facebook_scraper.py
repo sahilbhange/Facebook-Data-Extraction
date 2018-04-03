@@ -91,9 +91,9 @@ class FacebookScraper:
         file.close()
         print("Generated {} table csv File for {}".format(table_name, page_name))
 
-    def convert_feed_data(self, response_json_list):
+    def extract_feed_data(self, response_json_list):
         '''This method takes response json data and convert to csv'''
-        print("convert_feed_data-----")
+        print("extract_feed_data-----")
         list_all = []
         for response_json in response_json_list:
             data = response_json["data"]
@@ -346,7 +346,7 @@ if __name__ == "__main__":
             quit()
     
     print("Create feed table")    
-    feed_table_list = fb.convert_feed_data(json_list)
+    feed_table_list = fb.extract_feed_data(json_list)
     #print(feed_table_list[0])
     fb.create_table_header(feed_table_list, csv_feed_path_input, target_page_input, "feed")
     print("Feed generated")    
