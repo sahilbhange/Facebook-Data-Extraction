@@ -63,7 +63,7 @@ class FacebookScraper:
 
         return data
    
-    def create_table(self, list_rows, file_path, page_name, table_name):
+    def create_table_header(self, list_rows, file_path, page_name, table_name):
         '''This method will create a table according to header and table name'''
 
         if table_name == "feed" :
@@ -348,19 +348,19 @@ if __name__ == "__main__":
     print("Create feed table")    
     feed_table_list = fb.convert_feed_data(json_list)
     #print(feed_table_list[0])
-    fb.create_table(feed_table_list, csv_feed_path_input, target_page_input, "feed")
+    fb.create_table_header(feed_table_list, csv_feed_path_input, target_page_input, "feed")
     print("Feed generated")    
     
     print("Create Comment table")
     comments_table_list = fb.convert_comments_data(json_list)
     #print(comments_table_list[0])
-    fb.create_table(comments_table_list, csv_comments_path_input, target_page_input, "comments")
+    fb.create_table_header(comments_table_list, csv_comments_path_input, target_page_input, "comments")
     print("comments_table_list generated")
     
     print("Create Comment replies table")
     comment_replies_list = fb.convert_comment_replies_data(json_list)
     #print(comment_replies_list[0])
-    fb.create_table(comment_replies_list, csv_reply_comment_path_input, target_page_input, "comment_replies")
+    fb.create_table_header(comment_replies_list, csv_reply_comment_path_input, target_page_input, "comment_replies")
     print("comments_table_list generated")
     
     
