@@ -33,7 +33,7 @@ class FacebookScraper:
         self.token = token
 
     @staticmethod
-    def convert_to_epochtime(date_string):
+    def epochtime(date_string):
         '''Enter date_string in 2000-01-01 format and convert to epochtime for GET request'''
         try:
             epoch = int(time.mktime(time.strptime(date_string, '%Y-%m-%d')))
@@ -45,16 +45,16 @@ class FacebookScraper:
     def get_feed_data(self, target_page, offset, fields, json_path, date_string):
         """This function will get the feed data"""
         
-        url = "https://graph.facebook.com/v2.10/{}/feed".format(target_page)
+        requrl = "https://graph.facebook.com/v2.10/{}/feed".format(target_page)
         param = dict()
         param["access_token"] = self.token
         param["limit"] = "100"
         param["offset"] = offset
         param["fields"] = fields
-        param["since"] = self.convert_to_epochtime(date_string)
+        param["since"] = self.epochtime(date_string)
         #print("PARAMETER---",param)
         #print("URL---",url)
-        r = requests.get(url, param)
+        r = requests.get(requrl, param)
         data = json.loads(r.text)
         f = open(json_path, "w", encoding='utf-8')  #In Python 3, we need to specify encoding when open a file
         #f = open(json_path, "w")
