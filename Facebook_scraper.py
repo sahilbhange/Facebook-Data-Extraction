@@ -42,7 +42,7 @@ class FacebookScraper:
             print('Invalid string format. Make sure to use %Y-%m-%d')
             quit()
 
-    def get_feed_data(self, target_page, offset, fields, json_path, date_string):
+    def extract_feed_data(self, target_page, offset, fields, json_path, date_string):
         """This function will get the feed data"""
         
         requrl = "https://graph.facebook.com/v2.10/{}/feed".format(target_page)
@@ -331,7 +331,7 @@ if __name__ == "__main__":
         path = str(offset) + "_" + json_path_input
         #print("path--",path)
         try:
-            data = fb.get_feed_data(target_page_input, str(offset), field_input, path, date_since_input)
+            data = fb.extract_feed_data(target_page_input, str(offset), field_input, path, date_since_input)
             check = data['data']
             if (len(check) >= 100):
                 json_list.append(data)
