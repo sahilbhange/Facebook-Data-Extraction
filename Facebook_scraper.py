@@ -235,9 +235,9 @@ class FacebookScraper:
                             break
         return list_all
    
-    def convert_comment_replies_data(self, response_json_list):
+    def extract_comment_replies_data(self, response_json_list):
         '''This will get the replies to the comments posted on FB'''
-        print("convert_comment_replies_data-----")
+        print("extract_comment_replies_data-----")
         list_all = []
         for response_json in response_json_list:
             data = response_json["data"]
@@ -358,7 +358,7 @@ if __name__ == "__main__":
     print("comments_table_list generated")
     
     print("Create Comment replies table")
-    comment_replies_list = fb.convert_comment_replies_data(json_list)
+    comment_replies_list = fb.extract_comment_replies_data(json_list)
     #print(comment_replies_list[0])
     fb.create_table_header(comment_replies_list, csv_reply_comment_path_input, target_page_input, "comment_replies")
     print("comments_table_list generated")
