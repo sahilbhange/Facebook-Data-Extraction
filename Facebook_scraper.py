@@ -52,8 +52,6 @@ class FacebookScraper:
         param["offset"] = offset
         param["fields"] = fields
         param["since"] = self.epochtime(date_string)
-        #print("PARAMETER---",param)
-        #print("URL---",url)
         r = requests.get(requrl, param)
         data = json.loads(r.text)
         f = open(json_path, "w", encoding='utf-8')  #In Python 3, we need to specify encoding when open a file
