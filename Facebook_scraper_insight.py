@@ -33,7 +33,7 @@ class FacebookScraper:
         self.token = token
 
     @staticmethod
-    def convert_to_epochtime(date_string):
+    def extract_to_epochtime(date_string):
         '''Enter date_string in 2000-01-01 format and convert to epochtime for GET request'''
         try:
             epoch = int(time.mktime(time.strptime(date_string, '%Y-%m-%d')))
@@ -51,7 +51,7 @@ class FacebookScraper:
         param["limit"] = "100"
         param["offset"] = offset
         param["fields"] = fields
-        param["since"] = self.convert_to_epochtime(date_string)
+        param["since"] = self.extract_to_epochtime(date_string)
         #print("PARAMETER---",param)
         #print("URL---",url)
         r = requests.get(url, param)
@@ -65,7 +65,7 @@ class FacebookScraper:
 
         return data
    
-    def create_table(self, list_rows, file_path, page_name, table_name):
+    def create_table_header(self, list_rows, file_path, page_name, table_name):
         '''This method will create a table according to header and table name'''
 
         if table_name == "feed" :
@@ -93,9 +93,9 @@ class FacebookScraper:
         file.close()
         print("Generated {} table csv File for {}".format(table_name, page_name))
 
-    def convert_feed_data(self, response_json_list):
+    def extract_feed_data(self, response_json_list):
         '''This method takes response json data and convert to csv'''
-        print("convert_feed_data-----")
+        print("extract_feed_data-----")
         list_all = []
         for response_json in response_json_list:
             data = response_json["data"]
@@ -182,7 +182,7 @@ class FacebookScraper:
        
         return list_all
 
-    def convert_comments_data(self, response_json_list):
+    def extract_comments_data(self, response_json_list):
         '''Function to extract post comment data'''
         list_all = []
         for response_json in response_json_list:
@@ -252,9 +252,9 @@ class FacebookScraper:
                             break
         return list_all
    
-    def convert_comment_replies_data(self, response_json_list):
+    def extract_comment_replies_data(self, response_json_list):
         '''This will get the replies to the comments posted on FB'''
-        print("convert_comment_replies_data-----")
+        print("extract_comment_replies_data-----")
         list_all = []
         for response_json in response_json_list:
             data = response_json["data"]
@@ -366,19 +366,19 @@ if __name__ == "__main__":
             quit()
     
     print("Create feed table")    
-    feed_table_list = fb.convert_feed_data(json_list)
+    feed_table_list = fb.extract_feed_data(json_list)
     print(feed_table_list[0])
-    fb.create_table(feed_table_list, csv_feed_path_input, target_page_input, "feed")
+    fb.create_table_header(feed_table_list, csv_feed_path_input, target_page_input, "feed")
     print("Feed generated")    
     
     print("Create Comment table")
-    comments_table_list = fb.convert_comments_data(json_list)
+    comments_table_list = fb.extract_comments_data(json_list)
     print(comments_table_list[0])
-    fb.create_table(comments_table_list, csv_comments_path_input, target_page_input, "comments")
+    fb.create_table_header(comments_table_list, csv_comments_path_input, target_page_input, "comments")
     print("comments_table_list generated")
     
     print("Create Comment replies table")
-    comment_replies_list = fb.convert_comment_replies_data(json_list)
+    comment_replies_list = fb.extract_comment_replies_data(json_list)
     print(comment_replies_list[0])
-    fb.create_table(comment_replies_list, csv_reply_comment_path_input, target_page_input, "comment_replies")
+    fb.create_table_header(comment_replies_list, csv_reply_comment_path_input, target_page_input, "comment_replies")
     print("comments_table_list generated")
