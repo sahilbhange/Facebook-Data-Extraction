@@ -7,6 +7,8 @@ Update the below parameters in the program before execution
     target_page_input = 'Enter the facebook page name'
     date_since_input = 'Enter the date from which data is required'
 Script runs on Python 2/3 with minor changes which are commented in the program
+Note: Need an Admin level access to the page on the Facebook to execute this script and collect the page insights
+
 @author: sahil
 """
 
